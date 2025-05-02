@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>CV გენერატორი</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://unpkg.com/jspdf@2.5.1/dist/polyfills.utf8.js"></script>
 </head>
 <body style="font-family: Arial; max-width: 600px; margin: auto;">
   <h2>შეავსე შენი CV</h2>
@@ -30,4 +29,8 @@
   <button onclick="generatePDF()">⬇ გადმოწერე PDF</button>
 
   <script>
-    async
+    const { jsPDF } = window.jspdf;
+
+    // Base64 შრიფტი ჩაშენებულია — FiraGO.ttf
+    jsPDF.API.events.push(["addFonts", function() {
+      this.addFileToVFS("FiraGO.ttf", "AAEAAAALAIAAAwAwT1MvMg8SBXgAAAC8AAAAYGNtYXABdL50AAABHAAAAExnYXNwAAAAEAAAAXgAAAAIZ2x5ZkJNeMcAAAF4AAAD3GhlYWQG7gUIAAAGeAAAADZoaGVhB7IC6AAAByAAAACMaG10eA0AAAEAAAf4AAAAIGxvY2EBBAAEAAAH+AAAAChtYXhwAAQAJgAACPAAAAAgbmFtZQ6YB4oAAAjgAAAB2nBvc3QAAwAAAAAKKAAAACBwcmVwAAEACgAAADMAAAACAAEAAwAAAAIAAAAAAAAAAgABAAIAAAAAAAAAAAEAAQAAAEAAAwABAAAAAQAABAAAAAEAAf//AAABAAAAAAAAAAAAAAAAAAAACgAUAAEAAAAAAAEACgAAAAEAAAAAAAIABwAEAAEAAAAAAAMACgASAAEAAAAAAAUABwAfAAEAAAAAAAYACgAnAAEAAAAAAAoAGAA7AAEAAAAAAAsAEgCAAAEAAAAAAAwAAQAgAAEAAAAAAA0AAgBIAAEAAAAAAA4AAQBOAAEAAAAAAA8ACgCqAAEAAAAAABAAAgDsAAEAAAAAABEAAgE4AAEAAAAAABIAAwGoAAEAAAAAABMAAwHUAAEAAAAAABQACAD6AAEAAAAAABUAGgETAAEAAAAAABYAGgEb
