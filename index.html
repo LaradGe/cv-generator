@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>CV გენერატორი</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jspdf@2.5.1/dist/polyfills.utf8.js"></script>
 </head>
 <body style="font-family: Arial; max-width: 600px; margin: auto;">
   <h2>შეავსე შენი CV</h2>
@@ -29,29 +30,4 @@
   <button onclick="generatePDF()">⬇ გადმოწერე PDF</button>
 
   <script>
-    async function generatePDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const position = document.getElementById('position').value;
-      const education = document.getElementById('education').value;
-      const experience = document.getElementById('experience').value;
-      const skills = document.getElementById('skills').value;
-
-      doc.text(`სახელი, გვარი: ${name}`, 10, 20);
-      doc.text(`ელფოსტა: ${email}`, 10, 30);
-      doc.text(`პოზიცია: ${position}`, 10, 40);
-      doc.text('განათლება:', 10, 50);
-      doc.text(education, 20, 60);
-      doc.text('გამოცდილება:', 10, 80);
-      doc.text(experience, 20, 90);
-      doc.text('უნარები და ენები:', 10, 110);
-      doc.text(skills, 20, 120);
-
-      doc.save(`${name}_cv.pdf`);
-    }
-  </script>
-</body>
-</html>
+    async
