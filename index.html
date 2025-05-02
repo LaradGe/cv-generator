@@ -33,4 +33,34 @@
 
     // Base64 შრიფტი ჩაშენებულია — FiraGO.ttf
     jsPDF.API.events.push(["addFonts", function() {
-      this.addFileToVFS("FiraGO.ttf", "AAEAAAALAIAAAwAwT1MvMg8SBXgAAAC8AAAAYGNtYXABdL50AAABHAAAAExnYXNwAAAAEAAAAXgAAAAIZ2x5ZkJNeMcAAAF4AAAD3GhlYWQG7gUIAAAGeAAAADZoaGVhB7IC6AAAByAAAACMaG10eA0AAAEAAAf4AAAAIGxvY2EBBAAEAAAH+AAAAChtYXhwAAQAJgAACPAAAAAgbmFtZQ6YB4oAAAjgAAAB2nBvc3QAAwAAAAAKKAAAACBwcmVwAAEACgAAADMAAAACAAEAAwAAAAIAAAAAAAAAAgABAAIAAAAAAAAAAAEAAQAAAEAAAwABAAAAAQAABAAAAAEAAf//AAABAAAAAAAAAAAAAAAAAAAACgAUAAEAAAAAAAEACgAAAAEAAAAAAAIABwAEAAEAAAAAAAMACgASAAEAAAAAAAUABwAfAAEAAAAAAAYACgAnAAEAAAAAAAoAGAA7AAEAAAAAAAsAEgCAAAEAAAAAAAwAAQAgAAEAAAAAAA0AAgBIAAEAAAAAAA4AAQBOAAEAAAAAAA8ACgCqAAEAAAAAABAAAgDsAAEAAAAAABEAAgE4AAEAAAAAABIAAwGoAAEAAAAAABMAAwHUAAEAAAAAABQACAD6AAEAAAAAABUAGgETAAEAAAAAABYAGgEb
+      this.addFileToVFS("FiraGO.ttf", "AAEAAAALAIAAAwAwT1MvMg8SBXgAAAC8AAAAYGNtYXABdL50AAABHAAAAExnYXNwAAAAEAAAAXgAAAAIZ2x5ZkJNeMcAAAF4AAAD3GhlYWQG7gUIAAAGeAAAADZoaGVhB7IC6AAAByAAAACMaG10eA0AAAEAAAf4AAAAIGxvY2EBBAAEAAAH+AAAAChtYXhwAAQAJgAACPAAAAAgbmFtZQ6YB4oAAAjgAAAB2nBvc3QAAwAAAAAKKAAAACBwcmVwAAEACgAAADMAAAACAAEAAwAAAAIAAAAAAAAAAgABAAIAAAAAAAAAAAEAAQAAAEAAAwABAAAAAQAABAAAAAEAAf//AAABAAAAAAAAAAAAAAAAAAAACgAUAAEAAAAAAAEACgAAAAEAAAAAAAIABwAEAAEAAAAAAAMACgASAAEAAAAAAAUABwAfAAEAAAAAAAYACgAnAAEAAAAAAAoAGAA7AAEAAAAAAAsAEgCAAAEAAAAAAAwAAQAgAAEAAAAAAA0AAgBIAAEAAAAAAA4AAQBOAAEAAAAAAA8ACgCqAAEAAAAAABAAAgDsAAEAAAAAABEAAgE4AAEAAAAAABIAAwGoAAEAAAAAABMAAwHUAAEAAAAAABQACAD6AAEAAAAAABUAGgETAAEAAAAAABYAGgEbAAEAAAAAABcAGgErAAEAAAAAABgAGgE3AAEAAAAAABkAGgFD..."); // შემოკლებულია
+      this.addFont("FiraGO.ttf", "FiraGO", "normal");
+    }]);
+
+    async function generatePDF() {
+      const doc = new jsPDF();
+      doc.setFont("FiraGO", "normal");
+      doc.setFontSize(12);
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const position = document.getElementById('position').value;
+      const education = document.getElementById('education').value;
+      const experience = document.getElementById('experience').value;
+      const skills = document.getElementById('skills').value;
+
+      doc.text(`სახელი, გვარი: ${name}`, 10, 20);
+      doc.text(`ელფოსტა: ${email}`, 10, 30);
+      doc.text(`პოზიცია: ${position}`, 10, 40);
+      doc.text("განათლება:", 10, 50);
+      doc.text(education, 20, 60);
+      doc.text("გამოცდილება:", 10, 80);
+      doc.text(experience, 20, 90);
+      doc.text("უნარები და ენები:", 10, 110);
+      doc.text(skills, 20, 120);
+
+      doc.save(`${name}_cv.pdf`);
+    }
+  </script>
+</body>
+</html>
